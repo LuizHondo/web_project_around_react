@@ -3,64 +3,10 @@ import Popup from "../Popup/Popup";
 import NewCard from "../Popup/components/NewCard/NewCard";
 import EditProfile from "../Popup/components/EditProfile/EditProfile";
 import EditAvatar from "../Popup/components/EditAvatar/EditAvatar";
-import Card from "../Popup/components/Card/Card";
+import Card from "./Card/Card";
 import ImagePopup from "../Popup/components/ImagePopup/ImagePopup";
-import avatarImage from "/Users/luizpaulohondo/Documents/Sprint13ProjectMac/vite-project/images/avatar.png"
-
-const cards = [
-  {
-    isLiked: false,
-    _id: '5d1f0611d321eb4bdcd707dd',
-    name: 'Yosemite Valley',
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg',
-    owner: '5d1f0611d321eb4bdcd707dd',
-    createdAt: '2019-07-05T08:10:57.741Z',
-  },
-  {
-    isLiked: false,
-    _id: '5d1f064ed321eb4bdcd707de',
-    name: 'Lake Louise',
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg',
-    owner: '5d1f0611d321eb4bdcd707dd',
-    createdAt: '2019-07-05T08:11:58.324Z',
-  },
-  {
-    isLiked: false,
-    _id: '5d1f064ed321eb4bdcd3707de',
-    name: 'Lake Louise',
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg',
-    owner: '5d1f0611d321eb4bdcd707dd',
-    createdAt: '2019-07-05T08:11:58.324Z',
-  },
-  {
-    isLiked: false,
-    _id: '5d1f064ed321eb4bd34cd707de',
-    name: 'Lake Louise',
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg',
-    owner: '5d1f0611d321eb4bdcd707dd',
-    createdAt: '2019-07-05T08:11:58.324Z',
-  },
-    {
-    isLiked: false,
-    _id: '5d1f064ed321eb4bd345cd707de',
-    name: 'Lake Louise',
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg',
-    owner: '5d1f0611d321eb4bdcd707dd',
-    createdAt: '2019-07-05T08:11:58.324Z',
-  },
-    {
-    isLiked: false,
-    _id: '5d1f064ed321eb4bdfsdcd707de',
-    name: 'Lake Louise',
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg',
-    owner: '5d1f0611d321eb4bdcd707dd',
-    createdAt: '2019-07-05T08:11:58.324Z',
-  },
-];
-
-
-
-
+import avatarImage from "../../../images/avatar.png"
+import { cards } from "../../utils/initialCards";
 
 
 export default function Main(){
@@ -71,7 +17,7 @@ export default function Main(){
   const imageComponent = {children:<ImagePopup></ImagePopup>}
 
 
-  const handleOpenPopup = (popup)=>{
+  function handleOpenPopup(popup){
     setPopup(popup)
   }
   function handleClosePopup(){
@@ -120,7 +66,7 @@ export default function Main(){
           <ul className="cards__list">
             {cards.map((card) => (
               <Card
-                handle={handleOpenPopup}
+                handler={handleOpenPopup}
                 key={card._id}
                 card={card}
                 imageComponent={ImagePopup}

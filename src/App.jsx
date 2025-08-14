@@ -9,16 +9,15 @@ import Popup from "./components/Popup/Popup.jsx"
 
 
 export default function App() {
-  const [count, setCount] = useState(0)
-  const [popup, setPopup] = useState(0)
+
   return (
-    <>
-      <div className="page">
-        <Header></Header>
-        <Main></Main>
-        <Footer></Footer>
-      </div>
-    </>
+
+    <div className="page">
+      <Header></Header>
+      <Main></Main>
+      <Footer></Footer>
+    </div>
+
   )
 }
 

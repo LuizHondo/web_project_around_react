@@ -89,12 +89,12 @@
   opacity: 1;
 }
 @media screen and (max-width: 880px) {
-  .cards {
+  .cards__list {
     grid-template-columns: auto auto;
   }
 }
 @media screen and (max-width: 600px) {
-  .cards {
+  .cards__list {
     grid-template-columns: auto;
     padding: 36px 0px 0px;
   }
