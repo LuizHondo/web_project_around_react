@@ -1,5 +1,7 @@
 import ImagePopup from "../../Popup/components/ImagePopup/ImagePopup";
 
+
+
 export default function Card(props) {
   const { name, link, isLiked } = props.card;
   const handlePopup = props.handler;

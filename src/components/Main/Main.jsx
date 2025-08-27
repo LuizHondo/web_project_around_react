@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Popup from "../Popup/Popup";
 import NewCard from "../Popup/components/NewCard/NewCard";
 import EditProfile from "../Popup/components/EditProfile/EditProfile";
@@ -6,7 +6,9 @@ import EditAvatar from "../Popup/components/EditAvatar/EditAvatar";
 import Card from "./Card/Card";
 import ImagePopup from "../Popup/components/ImagePopup/ImagePopup";
 import avatarImage from "../../../images/avatar.png"
-import { cards } from "../../utils/initialCards";
+// import { cards } from "../../utils/initialCards";
+
+import api from "../../utils/api"
 
 
 export default function Main(){
@@ -15,6 +17,30 @@ export default function Main(){
   const editProfile = {title:"Editar perfil",children:<EditProfile/>}
   const editAvatarPopup = {title:"Alterar foto de perfil",children:<EditAvatar/>}
   const imageComponent = {children:<ImagePopup></ImagePopup>}
+  const [cards, setCards] = useState();
+  
+  
+  useEffect(()=>{
+    api.getInitialCards().then((data)=>{setCards(data)})
+  },[])
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   function handleOpenPopup(popup){
@@ -54,7 +80,7 @@ export default function Main(){
                     alt="Botão para alterar dados de perfil"
                     className="profile__name-edit-button-image"
                   />
-                </button>
+                 </button>
               </div>
               <p className="profile__description">Description</p>
             </div>
