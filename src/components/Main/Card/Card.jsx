@@ -4,11 +4,20 @@ import ImagePopup from "../../Popup/components/ImagePopup/ImagePopup";
 
 export default function Card(props) {
   const { name, link, isLiked } = props.card;
+  const card = props.card;
   const handlePopup = props.handler;
   // const imagePopup = props.imageComponent
   const imageComponent = {title:name,children:<ImagePopup card={props.card}/>}
-  
+  const onCardLike = props.onCardLike;
+  const cardLikeButtonClassName = `card__like-button ${isLiked ? 'card__heart_active' : ''}`;
+  // console.log(onCardLike)
+  function handleLikeClick(){
+    onCardLike(card)
+  }
+
+
   return (
+    
     <li className="card">
       <img className="card__image"
         src={link}
@@ -25,7 +34,8 @@ export default function Card(props) {
         <button
           aria-label="Like card"
           type="button"
-          className="card__like-button"
+          className={cardLikeButtonClassName}
+          onClick={handleLikeClick}
         />
       </div>
     </li>

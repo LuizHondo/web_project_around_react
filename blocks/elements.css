@@ -81,10 +81,10 @@
   background-color: #fff;
   cursor: pointer;
 }
-.elements__heart:hover {
+.card__heart:hover {
   opacity: 0.5;
 }
-.elements__heart_active {
+.card__heart_active {
   background-image: url(../images/heart-active.png);
   opacity: 1;
 }

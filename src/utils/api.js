@@ -63,23 +63,31 @@ class Api {
     }).then(this._handleResponse);
   }
   //////// CURTIR
-  likeCard(cardId) {
+  // likeCard(cardId) {
 
     
+  //   return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+  //     method: "PUT",
+  //     headers: this._headers
+  //   }).then(this._handleResponse);
+  // }
+  // unlikeCard(cardId) {
+  //   return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+  //     method: "DELETE",
+  //     headers: this._headers
+  //   }).then(this._handleResponse);
+  // }
+
+  toggleLike(cardId, isLiked) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: "PUT",
-      headers: this._headers
-    }).then(this._handleResponse);
-  }
-  unlikeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: "DELETE",
+      method: isLiked ? "DELETE" : "PUT",
       headers: this._headers
     }).then(this._handleResponse);
   }
 
 
 }
+
 const api = new Api({
 baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
 headers: {
