@@ -12,24 +12,17 @@ import api from "../../utils/api"
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 
-export default function Main(){
-  const [popup, setPopup] = useState(null);
+export default function Main({popup,onOpenPopup,onClosePopup}){
+
   const newCardPopup = {title:"Novo local",children:<NewCard/>}
   const editProfile = {title:"Editar perfil",children:<EditProfile/>}
   const editAvatarPopup = {title:"Alterar foto de perfil",children:<EditAvatar/>}
   const imageComponent = {children:<ImagePopup></ImagePopup>}
   const [cards, setCards] = useState([]);
   const { currentUser } = useContext(CurrentUserContext);
-
   useEffect(()=>{
     api.getInitialCards().then((data)=>{setCards(data)})
   },[])
-  function handleOpenPopup(popup){
-    setPopup(popup)
-  }
-  function handleClosePopup(){
-    setPopup(null)
-  }
   async function handleCardLike(card) {
     // Verificar mais uma vez se esse cartão já foi curtido
     const isLiked = card.isLiked;
@@ -39,6 +32,12 @@ export default function Main(){
         setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
     }).catch((error) => console.error(error));
   }
+  async function handleCardDelete(card) {
+  
+    await api.deleteCard(card._id).
+      then(setCards((state) => state.filter((c) => c._id !== card._id))).
+        catch((err)=>{console.log(err)})
+}
 
   
     return(
@@ -50,7 +49,7 @@ export default function Main(){
                src="./images/edit-avatar-button.png"
                alt="Botão para alterar foto de perfil" 
                className="profile__avatar-button"
-               onClick={()=>handleOpenPopup(editAvatarPopup)}
+               onClick={()=>onOpenPopup(editAvatarPopup)}
                />
               <img 
                 alt="Avatar"
@@ -64,7 +63,7 @@ export default function Main(){
                 <button 
                   className="profile__name-edit-button" 
                   aria-label="Editar"
-                  onClick={()=>handleOpenPopup(editProfile)}
+                  onClick={()=>onOpenPopup(editProfile)}
 
                 >
                   <img
@@ -77,25 +76,26 @@ export default function Main(){
               <p className="profile__description">{currentUser.about}</p>
             </div>
           </div>
-          <button className="profile__add-button" onClick={()=>{handleOpenPopup(newCardPopup)}}></button>
+          <button className="profile__add-button" onClick={()=>{onOpenPopup(newCardPopup)}}></button>
         </section>
         
         <section className="cards">
           <ul className="cards__list">
             {cards.map((card) => (
               <Card
-                handler={handleOpenPopup}
+                handler={onOpenPopup}
                 key={card._id}
                 card={card}
                 imageComponent={ImagePopup}
                 onCardLike={handleCardLike}
+                onCardDelete={handleCardDelete}
               />
             ))}
           </ul>
           
         </section>
         {popup && (
-          <Popup onClose={handleClosePopup} title={popup.title}>
+          <Popup onClose={onClosePopup} title={popup.title}>
             {popup.children}
           </Popup>
         )}

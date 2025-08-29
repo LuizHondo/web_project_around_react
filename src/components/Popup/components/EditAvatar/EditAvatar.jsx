@@ -1,9 +1,29 @@
+import { useRef, useContext } from "react";
+import CurrentUserContext from '../../../../contexts/CurrentUserContext';
+
+
 export default function EditAvatar() {
+  const avatarRef = useRef();
+
+  const { handleUpdateAvatar } = useContext(CurrentUserContext)
+
+  function handleSubmit(e){
+    e.preventDefault();
+    const avatarUrl = avatarRef.current.value;
+    
+    handleUpdateAvatar({
+      avatar: avatarUrl
+    })
+    
+  }
+  
+
   return (
     <form
       className="popup__form"
       name="popup-avatar-form"
       id="popup-avatar-form"
+      onSubmit={handleSubmit}
       noValidate
     >
 
@@ -13,8 +33,9 @@ export default function EditAvatar() {
           id="popup-avatar-link"
           name="popup-avatar-link"
           placeholder="URL da imagem de perfil"
-          required
+          ref={avatarRef}
           type="url"
+          required
         />
         <span className="popup__error" id="popup-avatar-link-error"></span>
       </label>

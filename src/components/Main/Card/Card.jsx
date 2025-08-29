@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import ImagePopup from "../../Popup/components/ImagePopup/ImagePopup";
+import CurrentUserContext from '../../../contexts/CurrentUserContext';
 
 
 
@@ -8,11 +10,16 @@ export default function Card(props) {
   const handlePopup = props.handler;
   // const imagePopup = props.imageComponent
   const imageComponent = {title:name,children:<ImagePopup card={props.card}/>}
-  const onCardLike = props.onCardLike;
   const cardLikeButtonClassName = `card__like-button ${isLiked ? 'card__heart_active' : ''}`;
+
+  const { currentUser } = useContext(CurrentUserContext);
+
   // console.log(onCardLike)
   function handleLikeClick(){
-    onCardLike(card)
+    props.onCardLike(card)
+  }
+  function handleDeleteClick(){
+    props.onCardDelete(card)
   }
 
 
@@ -28,6 +35,7 @@ export default function Card(props) {
         aria-label="Delete card"
         className="card__delete-button"
         type="button"
+        onClick={handleDeleteClick}
       />
       <div className="card__description">
         <h2 className="card__title">{name}</h2>
