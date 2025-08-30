@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Footer from "./components/Footer/Footer.jsx"
 import Header from "./components/Header/Header.jsx"
 import Main from "./components/Main/Main.jsx"
-import api from "./utils/api"
+import api from "./utils/api.js"
 import CurrentUserContext from './contexts/CurrentUserContext.js'
 
 export default function App() {

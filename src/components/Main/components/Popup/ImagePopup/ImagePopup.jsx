@@ -1,5 +1,4 @@
 export default function ImagePopup(props){
-    // console.log(props.title)
     return(
     <>
         <img

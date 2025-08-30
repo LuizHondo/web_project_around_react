@@ -1,18 +1,11 @@
-import { useContext } from "react";
-import ImagePopup from "../../Popup/components/ImagePopup/ImagePopup";
-import CurrentUserContext from '../../../contexts/CurrentUserContext';
-
-
-
 export default function Card(props) {
   const { name, link, isLiked } = props.card;
+  const { ImagePopup } = props;
   const card = props.card;
   const handlePopup = props.handler;
-  // const imagePopup = props.imageComponent
   const imageComponent = {title:name,children:<ImagePopup card={props.card}/>}
   const cardLikeButtonClassName = `card__like-button ${isLiked ? 'card__heart_active' : ''}`;
 
-  const { currentUser } = useContext(CurrentUserContext);
 
   // console.log(onCardLike)
   function handleLikeClick(){

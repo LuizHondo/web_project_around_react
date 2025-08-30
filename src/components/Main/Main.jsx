@@ -1,12 +1,11 @@
 import { useState, useEffect, useContext } from "react";
-import Popup from "../Popup/Popup";
-import NewCard from "../Popup/components/NewCard/NewCard";
-import EditProfile from "../Popup/components/EditProfile/EditProfile";
-import EditAvatar from "../Popup/components/EditAvatar/EditAvatar";
-import Card from "./Card/Card";
-import ImagePopup from "../Popup/components/ImagePopup/ImagePopup";
-import avatarImage from "../../../images/avatar.png"
-// import { cards } from "../../utils/initialCards";
+import Popup from "./components/Popup/Popup";
+import NewCard from "./components/Popup/NewCard/NewCard"
+import EditProfile from "./components/Popup/EditProfile/EditProfile";
+import EditAvatar from "./components/Popup/EditAvatar/EditAvatar";
+import Card from "./components/Card/Card";
+import ImagePopup from "./components/Popup/ImagePopup/ImagePopup";
+
 
 import api from "../../utils/api"
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -17,17 +16,16 @@ export default function Main({popup,onOpenPopup,onClosePopup}){
   const newCardPopup = {title:"Novo local",children:<NewCard/>}
   const editProfile = {title:"Editar perfil",children:<EditProfile/>}
   const editAvatarPopup = {title:"Alterar foto de perfil",children:<EditAvatar/>}
-  const imageComponent = {children:<ImagePopup></ImagePopup>}
   const [cards, setCards] = useState([]);
   const { currentUser } = useContext(CurrentUserContext);
   useEffect(()=>{
     api.getInitialCards().then((data)=>{setCards(data)})
   },[])
   async function handleCardLike(card) {
-    // Verificar mais uma vez se esse cartão já foi curtido
+
     const isLiked = card.isLiked;
     
-    // Enviar uma solicitação para a API e obter os dados do cartão atualizados
+
     await api.toggleLike(card._id, isLiked).then((newCard) => {
         setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
     }).catch((error) => console.error(error));
@@ -86,7 +84,7 @@ export default function Main({popup,onOpenPopup,onClosePopup}){
                 handler={onOpenPopup}
                 key={card._id}
                 card={card}
-                imageComponent={ImagePopup}
+                ImagePopup={ImagePopup}
                 onCardLike={handleCardLike}
                 onCardDelete={handleCardDelete}
               />
