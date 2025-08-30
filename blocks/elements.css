@@ -45,7 +45,7 @@
   border: 0;
   cursor: pointer;
   background-color: transparent;
-  background-image: url(../images/Trash.svg);
+  background-image: url(../vendor/images/Trash.svg);
   background-size: cover;
   background-position: center;
   width: 18px;
@@ -74,7 +74,7 @@
   height: 19px;
   position: relative;
   bottom: 5px;
-  background-image: url(../images/heart-normal.png);
+  background-image: url(../vendor/images/heart-normal.png);
   background-size: cover;
   background-repeat: no-repeat;
   border: 0;
@@ -85,7 +85,7 @@
   opacity: 0.5;
 }
 .card__heart_active {
-  background-image: url(../images/heart-active.png);
+  background-image: url(../vendor/images/heart-active.png);
   opacity: 1;
 }
 @media screen and (max-width: 880px) {

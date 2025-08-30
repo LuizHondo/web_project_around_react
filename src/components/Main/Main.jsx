@@ -44,7 +44,7 @@ export default function Main({popup,onOpenPopup,onClosePopup}){
           <div className="profile__info">
             <div className="profile__avatar-container">
               <img
-               src="./images/edit-avatar-button.png"
+               src="../vendor/images/edit-avatar-button.png"
                alt="Botão para alterar foto de perfil" 
                className="profile__avatar-button"
                onClick={()=>onOpenPopup(editAvatarPopup)}
@@ -65,7 +65,7 @@ export default function Main({popup,onOpenPopup,onClosePopup}){
 
                 >
                   <img
-                    src="./images/edit-button.png"
+                    src="../vendor/images/edit-button.png"
                     alt="Botão para alterar dados de perfil"
                     className="profile__name-edit-button-image"
                   />
