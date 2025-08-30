@@ -6,8 +6,6 @@ export default function Card(props) {
   const imageComponent = {title:name,children:<ImagePopup card={props.card}/>}
   const cardLikeButtonClassName = `card__like-button ${isLiked ? 'card__heart_active' : ''}`;
 
-
-  // console.log(onCardLike)
   function handleLikeClick(){
     props.onCardLike(card)
   }

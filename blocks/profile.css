@@ -38,6 +38,7 @@
   top: 0px;
   left: 0px;
   border-radius: 50%;
+  background-image: url(../src/images/edit-avatar-button.png);
   
 }
 .profile__avatar-button {
@@ -85,6 +86,7 @@
   cursor: pointer;
 }
 .profile__name-edit-button-image {
+  background-image: url(../src/images/edit-button.png);
   width: 10px;
   height: 10px;
   cursor: pointer;
@@ -105,7 +107,7 @@
   background-position: center;
   background-size: 14.67%;
   background-repeat: no-repeat;
-  background-image: url(../vendor/images/add-button.png);
+  background-image: url(../src/images/add-button.png);
 }
 .profile__add-button:hover {
   opacity: 60%;

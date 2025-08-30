@@ -63,21 +63,6 @@ class Api {
     }).then(this._handleResponse);
   }
   //////// CURTIR
-  // likeCard(cardId) {
-
-    
-  //   return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-  //     method: "PUT",
-  //     headers: this._headers
-  //   }).then(this._handleResponse);
-  // }
-  // unlikeCard(cardId) {
-  //   return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-  //     method: "DELETE",
-  //     headers: this._headers
-  //   }).then(this._handleResponse);
-  // }
-
   toggleLike(cardId, isLiked) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: isLiked ? "DELETE" : "PUT",

@@ -46,7 +46,7 @@
   background-color: rgba(255, 255, 255, 0);
   background-size: cover;
   background-repeat: no-repeat;
-  background-image:url(../vendor/images/close-button.png)
+  background-image:url(../src/images/close-button.png)
 }
 
 .popup__form {
